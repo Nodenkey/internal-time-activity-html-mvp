@@ -1,2 +1,5 @@
 # internal-time-activity-html-mvp
-Monorepo for Internal Time &amp; Activity Tracker HTML MVP (FastAPI backend + HTML/CSS/JS frontend)
+
+Monorepo for the Internal Time & Activity Tracker HTML MVP.
+
+This branch (`feat/backend`) contains the FastAPI backend implementation with in-memory storage.
