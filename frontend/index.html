@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Internal Time & Activity Tracker</title>
+  <link rel="stylesheet" href="/frontend/styles.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>Internal Time & Activity Tracker</h1>
+
+    <section class="card" aria-labelledby="create-entry-heading">
+      <h2 id="create-entry-heading">Log time entry</h2>
+      <form id="entry-form">
+        <input type="hidden" id="entry-id" />
+        <div class="form-grid">
+          <label>
+            Date
+            <input type="date" id="date" name="date" required />
+          </label>
+          <label>
+            Person name
+            <input type="text" id="person_name" name="person_name" required />
+          </label>
+          <label>
+            Team
+            <input type="text" id="team" name="team" required />
+          </label>
+          <label class="full-width">
+            Activity
+            <textarea id="activity" name="activity" rows="2" required></textarea>
+          </label>
+          <label>
+            Start time
+            <input type="time" id="start_time" name="start_time" required />
+          </label>
+          <label>
+            End time
+            <input type="time" id="end_time" name="end_time" required />
+          </label>
+          <label>
+            Duration (minutes)
+            <input type="number" id="duration_minutes" name="duration_minutes" min="1" step="1" />
+          </label>
+        </div>
+        <div class="form-actions">
+          <button type="submit" id="save-button">Save entry</button>
+          <button type="button" id="cancel-edit-button" class="secondary hidden">Cancel edit</button>
+        </div>
+        <p id="form-message" class="message" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="card" aria-labelledby="filters-heading">
+      <div class="filters-header">
+        <h2 id="filters-heading">Entries</h2>
+        <div class="filters" aria-label="Filter time entries">
+          <label>
+            From
+            <input type="date" id="filter-date-from" />
+          </label>
+          <label>
+            To
+            <input type="date" id="filter-date-to" />
+          </label>
+          <label>
+            Person
+            <input type="text" id="filter-person" placeholder="e.g. Alice" />
+          </label>
+          <label>
+            Team
+            <input type="text" id="filter-team" placeholder="e.g. Engineering" />
+          </label>
+          <button type="button" id="apply-filters">Apply filters</button>
+          <button type="button" id="clear-filters" class="secondary">Clear</button>
+        </div>
+      </div>
+      <div id="table-message" class="message" role="status" aria-live="polite"></div>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Date</th>
+              <th scope="col">Person</th>
+              <th scope="col">Team</th>
+              <th scope="col">Activity</th>
+              <th scope="col">Start</th>
+              <th scope="col">End</th>
+              <th scope="col">Duration (min)</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="entries-body">
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    window.API_BASE_URL = window.API_BASE_URL || "http://localhost:8000";
+  </script>
+  <script src="/frontend/app.js"></script>
+</body>
+</html>
